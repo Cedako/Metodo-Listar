@@ -4,6 +4,13 @@ class Persona{
         this.edad=edad;
         this.siguiente=null;
     }
+
+    getName(){
+        return this.nombre;
+    }
+    getAge(){
+        return this.edad;
+    }
 }
 
 
@@ -27,9 +34,9 @@ class Grupo{
         }
         else {
             let aux=this.inicio
-            let lista=[]
+            let lista = ""
             while(aux!=null){
-                lista.push(aux)
+                lista += `|Nombre:${aux.getName()}, Edad:${aux.getAge()}|`
                 aux=aux.siguiente;
             }
             return lista
@@ -38,9 +45,9 @@ class Grupo{
 }
 
 let G1 = new Grupo();
-let Andres = new Persona("Andrés", 18);
-let German = new Persona("Germán",19);
+let p1 = new Persona("Andrés", 18);
+let p2 = new Persona("Germán",19);
 
-G1.agregar(Andres);
-G1.agregar(German);
+G1.agregar(p1);
+G1.agregar(p2);
 console.log(G1.listar())
