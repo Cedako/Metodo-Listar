@@ -21,4 +21,26 @@ class Grupo{
             aux.siguiente=nuevo;
         }
     }
+    listar(){
+        if(this.inicio == null){
+            return null;
+        }
+        else {
+            let aux=this.inicio
+            let lista=[]
+            while(aux!=null){
+                lista.push(aux)
+                aux=aux.siguiente;
+            }
+            return lista
+        }
+    }
 }
+
+let G1 = new Grupo();
+let Andres = new Persona("Andrés", 18);
+let German = new Persona("Germán",19);
+
+G1.agregar(Andres);
+G1.agregar(German);
+console.log(G1.listar())
