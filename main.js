@@ -3,6 +3,7 @@ class Persona{
         this.nombre=nombre;
         this.edad=edad;
         this.siguiente=null;
+        this.info = `|Nombre:${this.nombre}, Edad:${this.edad}|`
     }
 
     getName(){
@@ -29,18 +30,46 @@ class Grupo{
         }
     }
     listar(){
-        if(this.inicio == null){
-            return null;
+        let aux=this.inicio
+        let lista = ""
+        while(aux!=null){
+            lista += aux.info;
+            aux=aux.siguiente;
         }
-        else {
-            let aux=this.inicio
-            let lista = ""
-            while(aux!=null){
-                lista += `|Nombre:${aux.getName()}, Edad:${aux.getAge()}|`
-                aux=aux.siguiente;
+        return lista
+    }
+
+    buscar(nombre){
+        let temp = this.inicio;
+        while(temp!=null){
+            if(temp.nombre == nombre){
+                return temp
             }
-            return lista
+            temp = temp.siguiente
         }
+        return null;
+    }
+
+    elim(nombre){
+        let del = null;
+        if (nombre==this.inicio.nombre){
+            del = this.inicio
+            this.inicio = this.inicio.siguiente
+            del.siguiente = null
+            return del;
+        }
+        let temp=this.inicio;
+        while(temp.siguiente != null ){
+        if (temp.siguiente.nombre==nombre)
+        {
+            del=temp.siguiente;
+            temp.siguiente=temp.siguiente.siguiente;
+            del.siguiente=null;
+            return del;
+        } else
+            temp=temp.siguiente;
+        }
+        return del;
     }
 }
 
